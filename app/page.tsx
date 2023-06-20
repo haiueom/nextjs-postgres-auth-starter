@@ -1,7 +1,8 @@
 import { Card, Title, Text } from '@tremor/react';
-import Search from '@/components/searchs/search';
-import UsersTable from '@/components/tables/table';
-import prisma from '@/lib/prisma';
+// import { queryBuilder } from '../lib/planetscale';
+import Search from './search';
+import UsersTable from './table';
+import prisma from '../lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,14 +12,13 @@ export default async function IndexPage({
   searchParams: { q: string };
 }) {
   const search = searchParams.q ?? '';
+  // const users = await queryBuilder
+  //   .selectFrom('users')
+  //   .select(['id', 'name', 'username', 'email'])
+  //   .where('name', 'like', `%${search}%`)
+  //   .execute();
 
-  // prisma find many with parameter search
-  const users = await prisma.user.findMany({
-    orderBy: {
-      email: 'asc'
-    },
-
-  });
+  const users = await prisma.$queryRaw`SELECT id, name, email FROM users WHERE name LIKE '%${search}%'`
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
