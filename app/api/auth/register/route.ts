@@ -17,6 +17,7 @@ export async function POST(req: Request) {
       data: {
         email,
         password: await hash(password, 10),
+        name: email.split("@")[0],
       },
     });
     return NextResponse.json(user);
