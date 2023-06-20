@@ -18,7 +18,11 @@ export default async function IndexPage({
   //   .where('name', 'like', `%${search}%`)
   //   .execute();
 
-  const users = await prisma.$queryRaw`SELECT id, name, email FROM user WHERE name LIKE '%${search}%'`
+  const users = await prisma.user.findMany({
+    orderBy: {
+      id: 'asc'
+    }
+});
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
