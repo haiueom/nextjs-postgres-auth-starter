@@ -14,13 +14,17 @@ interface User {
   email: string;
 }
 
-export default async function UsersTable({ users }: { users: User[] }) {
+interface UsersTableProps {
+  users: User[];
+}
+
+const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
   return (
     <Table>
       <TableHead>
         <TableRow>
-          <TableHeaderCell>ID</TableHeaderCell>
           <TableHeaderCell>Name</TableHeaderCell>
+          <TableHeaderCell>Username</TableHeaderCell>
           <TableHeaderCell>Email</TableHeaderCell>
         </TableRow>
       </TableHead>
@@ -39,4 +43,6 @@ export default async function UsersTable({ users }: { users: User[] }) {
       </TableBody>
     </Table>
   );
-}
+};
+
+export default UsersTable;

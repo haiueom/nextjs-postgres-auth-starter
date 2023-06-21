@@ -1,28 +1,16 @@
-import { Card, Title, Text } from '@tremor/react';
-// import { queryBuilder } from '../lib/planetscale';
-import Search from './search';
-import UsersTable from './table';
-import prisma from '../lib/prisma';
+import { Card, Title, Text } from "@tremor/react";
+import Search from "@/components/searchs/search";
+import UsersTable from "@/components/tables/userTable";
+import prisma from "@/lib/prisma";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-export default async function IndexPage({
-  searchParams
-}: {
-  searchParams: { q: string };
-}) {
-  const search = searchParams.q ?? '';
-  // const users = await queryBuilder
-  //   .selectFrom('users')
-  //   .select(['id', 'name', 'username', 'email'])
-  //   .where('name', 'like', `%${search}%`)
-  //   .execute();
-
+export default async function IndexPage() {
   const users = await prisma.user.findMany({
     orderBy: {
-      id: 'asc'
-    }
-});
+      id: "asc",
+    },
+  });
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">

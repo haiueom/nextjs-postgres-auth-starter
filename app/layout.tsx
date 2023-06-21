@@ -1,9 +1,10 @@
-import './globals.css';
+import '@/styles/globals.css';
 
 import { Analytics } from '@vercel/analytics/react';
-import Nav from './nav';
-import Toast from './toast';
+import Navbar from '@/components/navbars/navbar';
+import Toast from '@/components/toasts/toast';
 import { Suspense } from 'react';
+import { getServerSession } from 'next-auth/next';
 
 export const metadata = {
   title: 'Next.js 13 + PlanetScale + NextAuth + Tailwind CSS',
@@ -16,11 +17,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession();
   return (
     <html lang="en" className="h-full bg-gray-50">
       <body className="h-full">
         <Suspense>
-          <Nav />
+          <Navbar user={session?.user} />
         </Suspense>
         {children}
         <Analytics />
