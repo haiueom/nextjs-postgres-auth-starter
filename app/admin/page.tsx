@@ -1,12 +1,11 @@
 import { Card, Title, Text } from '@tremor/react';
-import Search from '@/components/searchs/search';
-import UsersTable from '@/components/tables/userTable';
+import ProductsTable from '@/components/tables/productTable';
 import prisma from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
 export default async function IndexPage() {
-    const users = await prisma.user.findMany({
+    const items = await prisma.product.findMany({
         orderBy: {
             id: 'asc',
         },
@@ -14,11 +13,10 @@ export default async function IndexPage() {
 
     return (
         <main className="mx-auto max-w-7xl p-4 md:p-10">
-            <Title>Users</Title>
-            <Text>A list of users retrieved from a MySQL database (PlanetScale).</Text>
-            <Search />
+            <Title>Products</Title>
+            <Text>A list of products retrieved from database.</Text>
             <Card className="mt-6">
-                <UsersTable users={users} />
+                <ProductsTable items={items} />
             </Card>
         </main>
     );
