@@ -34,7 +34,7 @@ const ProductsTable: React.FC<ItemsTableProps> = ({ items }) => {
                 <TableRow>
                     <TableHeaderCell>ID</TableHeaderCell>
                     <TableHeaderCell>Name</TableHeaderCell>
-                    <TableHeaderCell>price</TableHeaderCell>
+                    <TableHeaderCell>Price</TableHeaderCell>
                     <TableHeaderCell>Stock</TableHeaderCell>
                     <TableHeaderCell>Action</TableHeaderCell>
                 </TableRow>

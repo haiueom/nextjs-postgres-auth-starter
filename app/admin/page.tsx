@@ -4,6 +4,12 @@ import prisma from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+    title: 'Dashboard Admin',
+    description:
+        'A user admin dashboard configured with Next.js, PlanetScale, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.',
+};
+
 export default async function IndexPage() {
     const items = await prisma.product.findMany({
         orderBy: {
