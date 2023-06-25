@@ -23,7 +23,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
         <Table>
             <TableHead>
                 <TableRow>
-                    <TableHeaderCell>Name</TableHeaderCell>
+                    <TableHeaderCell>ID</TableHeaderCell>
                     <TableHeaderCell>Username</TableHeaderCell>
                     <TableHeaderCell>Email</TableHeaderCell>
                 </TableRow>
