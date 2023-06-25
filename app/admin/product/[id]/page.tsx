@@ -1,12 +1,10 @@
-import { useRouter } from 'next/router'
 import prisma from '@/lib/prisma'
 import { Card, Title, Text } from '@tremor/react';
 
 export const dynamic = 'force-dynamic';
 
-export default function Page() {
-    const router = useRouter()
-    const id = router.query.id
+export default async function Page({ params }: { params: { id: string } }) {
+    const id = params.id
     const product = await prisma.product.findUnique({
         where: {
             id: Number(id),
