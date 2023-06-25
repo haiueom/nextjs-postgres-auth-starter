@@ -19,7 +19,7 @@ export default async function IndexPage() {
 
     return (
         <main className="mx-auto max-w-7xl p-4 md:p-10">
-            <Title>Products</Title>
+            <Title>Admin Products</Title>
             <Text>A list of products retrieved from database.</Text>
             <Card className="mt-6">
                 <ProductsTable items={items} />
