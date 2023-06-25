@@ -6,7 +6,6 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 const navigation = [
     { name: 'Dashboard', href: '/' },
@@ -19,7 +18,6 @@ function classNames(...classes: string[]) {
 
 export default function Navbar({ user }: { user: any }) {
     const pathname = usePathname();
-    const router = useRouter()
 
     return (
         <Disclosure as="nav" className="bg-white shadow-sm">
@@ -120,10 +118,7 @@ export default function Navbar({ user }: { user: any }) {
                                                                 'flex w-full px-4 py-2 text-sm text-gray-700'
                                                             )}
                                                             // onclick redirect to /login
-                                                            onClick={() => {
-                                                                router.refresh();
-                                                                router.push('/login');
-                                                            }}
+                                                            onClick={() => signIn("credentials")}
                                                         >
                                                             Sign in
                                                         </button>
