@@ -7,26 +7,24 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+  provider = "mongodb"
+  url = env("MONGODB_URI")
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String?  @unique
   password  String
-  name      String?
+  name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String
-  price       Float
+  price       Int
   stock       Int
   image       String
   createdAt   DateTime @default(now())

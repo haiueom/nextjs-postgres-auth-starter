@@ -13,8 +13,8 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     if (!product) {
         return (
-            <main className="mx-auto max-w-7xl p-4 md:p-10 flex flex-col justify-center items-center text-center">
-                <Card>
+            <main className="mx-auto max-w-7xl p-4 md:p-10">
+                <Card className='flex flex-col justify-center items-center text-center'>
                     <Title>Product not found</Title>
                     <Text>Sorry, but the product you were looking for could not be found.</Text>
                 </Card>
@@ -23,8 +23,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     }
 
     return (
-        <main className="mx-auto max-w-7xl p-4 md:p-10 flex flex-col justify-center items-center text-center">
-            <Card>
+        <main className="mx-auto max-w-7xl p-4 md:p-10">
+            <Card className=' flex flex-col justify-center items-center text-center'>
                 <Title>Product {id}</Title>
                 <Text>{product}</Text>
             </Card>
