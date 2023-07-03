@@ -8,7 +8,7 @@ const nextConfig = {
         serverComponentsExternalPackages: ['@tremor/react'],
     },
     images: {
-        domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh'],
+        domains: ['avatars.githubusercontent.com', 'avatar.vercel.sh', "via.placeholder.com"],
     },
 };
 

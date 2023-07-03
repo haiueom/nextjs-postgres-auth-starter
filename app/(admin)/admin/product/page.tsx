@@ -1,20 +1,8 @@
-import { Card, Title, Text, Flex } from '@tremor/react';
-import ProductsTable from '@/components/tables/productTable';
-import prisma from '@/lib/prisma';
-import { Metadata } from 'next'
-import Btn from '@/components/buttons/addProduct';
+import { Title, Text, Flex } from '@tremor/react';
+import AllTable from '@/components/tables/all.product';
+import AddBtn from '@/components/buttons/add.product';
 
-export const dynamic = 'force-dynamic';
-
-export const metadata: Metadata = {
-    title: 'Dashboard Admin',
-    description:
-        'A user admin dashboard configured with Next.js, PlanetScale, NextAuth, Tailwind CSS, TypeScript, ESLint, and Prettier.',
-};
-
-export default async function IndexPage() {
-    const items = await prisma.product.findMany({});
-
+export default async function Page() {
     return (
         <main className="mx-auto max-w-7xl p-4 md:p-10">
             <Flex>
@@ -23,12 +11,10 @@ export default async function IndexPage() {
                     <Text>A list of products retrieved from database.</Text>
                 </div>
                 <div>
-                    <Btn text='Add Product' />
+                    <AddBtn />
                 </div>
             </Flex>
-            <Card className="mt-6">
-                <ProductsTable items={items} />
-            </Card>
+            <AllTable />
         </main>
     );
 }

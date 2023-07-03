@@ -4,9 +4,9 @@ import { Button } from "@tremor/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function Btn({text}: {text: string}) {
-    const router = useRouter();
+export default function AddBtn() {
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
     return (
         <Button
             loading={loading}
@@ -15,7 +15,7 @@ export default function Btn({text}: {text: string}) {
                 router.push("/admin/product/add");
             }}
         >
-            {text}
+            Add Product
         </Button>
     );
 }

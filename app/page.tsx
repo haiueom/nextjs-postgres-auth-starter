@@ -1,7 +1,10 @@
+import { Title, Metric } from '@tremor/react';
+
 export default async function IndexPage() {
     return (
-        <div className="container mx-auto">
-            <h1 className="text-4xl font-bold text-center">Welcome to the Next.js Starter!</h1>
-        </div>
+        <main className="mx-auto max-w-7xl p-4 md:p-10 flex flex-col h-full text-center justify-center items-center gap-4">
+            <Metric>This is Home Page</Metric>
+            <Title>Halooooo.</Title>
+        </main>
     );
 }
